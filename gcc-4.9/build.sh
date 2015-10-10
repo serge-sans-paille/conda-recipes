@@ -6,7 +6,8 @@ if [ `uname` == Darwin ]; then
         --with-mpc=$PREFIX \
         --with-isl=$PREFIX \
         --with-cloog=$PREFIX \
-        --disable-multilib
+        --disable-multilib \
+        --program-suffix=-4.9
 else
     ./configure \
         --prefix=$PREFIX \
@@ -14,8 +15,9 @@ else
         --with-mpfr=$PREFIX \
         --with-mpc=$PREFIX \
         --with-isl=$PREFIX \
-        --with-cloog=$PREFIX
+        --with-cloog=$PREFIX \
+        --program-suffix=-4.9
 fi
 
-make
+make -j3
 make install

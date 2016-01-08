@@ -1,13 +1,13 @@
 package:
   name: pythran
-  version: "0.7.1"
+  version: "0.7.4"
 
 source:
   fn: conda.zip [py27]
-  url: https://github.com/serge-sans-paille/pythran/archive/feature/conda.zip
+  url: https://github.com/serge-sans-paille/pythran/archive/0.7.2.zip
 
 build:
-  number: 4
+  number: 0
   script:
     - sed -i -e 's,CC=,CC=/opt/anaconda1anaconda2anaconda3/bin/gcc-4.9,' -e 's,CXX=,CXX=/opt/anaconda1anaconda2anaconda3/bin/g++-4.9,' -e 's,library_dirs=,library_dirs=/opt/anaconda1anaconda2anaconda3/lib,' -e 's,include_dirs=,include_dirs=/opt/anaconda1anaconda2anaconda3/include,' -e 's#ldflags=#ldflags=-Wl,-rpath /opt/anaconda1anaconda2anaconda3/lib64#' pythran/pythran-linux2.cfg
     - python setup.py -v install
@@ -15,15 +15,12 @@ build:
 requirements:
   build:
     - python
-    - boost
-    - cmake
     - ply
     - networkx
     - numpy
     - gcc_49
 
   run:
-    - boost
     - gmp
     - ply
     - networkx
